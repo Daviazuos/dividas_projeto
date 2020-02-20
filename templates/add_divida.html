@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<link href="static/css/sb-admin-2.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+
 <html>
 	<body>
 		<div class="jumbotron text-center">
@@ -18,14 +19,18 @@
 					{{ form.valor(class="form-control")}}
 					<label> Vencimento </label>
 					{{ form.vencimento(class="form-control",type="date",value="2020-01-01")}}
-
-					<div class="alert alert-primary" role="alert"> {{ msg }} </div>
+					<label> Divida Fixa </label>
+					{{ form.fixa(class="form-control", type="checkbox")}}
+					<div class="alert alert-primary" role="alert"> {{ msg }} </div>			    
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
 			</div>
 		</form>
 		<form action="/" method="post">
 			<button type="submit" class="btn btn-primary">Voltar</button>
+		</form>
+		<form action="/del_divida" method="post">
+			<button type="submit" class="btn btn-primary">Deletar tudo!</button>
 		</form>
 	</body>
 </html>

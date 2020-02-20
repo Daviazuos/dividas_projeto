@@ -13,7 +13,6 @@
 		<table id="example" class="table table-striped table-bordered">
         <thead>
 			<tr>
-			  <th scope="col">Somar</th>
 			  <th scope="col">Parcela</th>
 			  <th scope="col">Valor</th>
 			  <th scope="col">Nome</th>
@@ -24,28 +23,28 @@
 		<tbody>
 			{% for name in names %}
 				<tr>
-				  <td></td>
 				  <th scope="row">{{name[1]}}</th>
 				  <td>{{name[2]}}</td>
 				  <td>{{name[0]}}</td>
 				  <td>{{name[3]}}</td>
 				  <td>
-                	<div class="dropdown">
-                    <select class="form-control" id="rating" name="rating">
-                    	<option value="4" selected></option>
-					    <option value="3">Pago</option>
-					    <option value="2">A pagar</option>
-					    <option value="1">Pendente</option>
-					</select>
-					
-					</div>
-            	</td>
+				  	<form name="Item_1" action="/" method='POST'>
+	                	<div class="dropdown">
+	                    <select class="form-control" id="rating" name="rating">
+						    <option value="3">{{name[4]}} selected</option>
+						</select>
+						</div>
+					</form>
+            	  </td>
 				</tr>
 			{% endfor %}
 		</tbody>
 		</table>
 		<form action="/add_divida" method="post">
-			<button type="submit" class="btn btn-primary">Adicionar Divida</button>
+			<button type="submit" class="btn btn-primary">Adicionar/Deletar Dividas</button>
+		</form>
+		<form action="/edit_divida" method="post">
+			<button type="submit" class="btn btn-primary">Editar Dividas</button>
 		</form>
 	</div>
 	</body>
