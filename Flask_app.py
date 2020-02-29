@@ -1,7 +1,6 @@
 from flask import Flask,render_template, redirect, url_for, request
 from form import fields
 import os
-import conn
 import sqlite3 as sql
 
 
@@ -31,7 +30,7 @@ def delete_db():
             cur.execute("delete from dados")
             con.commit()
         except Exception:
-            msg = "Error"
+            msg = "Error to delete"
     return msg
 
 def insert_status(form):
