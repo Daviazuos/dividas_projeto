@@ -12,16 +12,10 @@
 		{{ form.csrf_token}}
 			<div class="col-md-6 col-md-offset-3">
 				<div class="form-group">
-					<label> Nome </label>
+					<label> Nome do Cartão </label>
 					{{ form.nome(class="form-control")}}
-					<label> Quantidade de parcelas </label>
-					{{ form.parcelas(class="form-control")}}
-					<label> Valor </label>
-					{{ form.valor(class="form-control")}}
 					<label> Vencimento </label>
 					{{ form.vencimento(class="form-control",type="date",value="2020-01-01")}}
-					<label> Divida Fixa </label>
-					{{ form.fixa(class="form-control", type="checkbox")}}
 					<div class="alert alert-primary" role="alert"> {{ msg }} </div>			    
 					<button type="submit" class="btn btn-primary">Submit</button>
 				</div>
