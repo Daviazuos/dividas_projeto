@@ -2,19 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="744787f5-ac25-4d23-a3a8-32eb129ed1e4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/routes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/projeto_dividas.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projeto_dividas.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Flask_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Flask_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conn.py" beforeDir="false" afterPath="$PROJECT_DIR$/conn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/func.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/func.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/add_divida.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_divida.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_divida.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/edit_divida.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +32,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1X2mFQpkmqfy2iKRvZz5C77z7pl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -47,18 +48,6 @@
       <recent name="C:\Users\Verônica\Documents\git\projeto_dividas\templates" />
       <recent name="C:\Users\Verônica\Documents\git\projeto_dividas" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.Flask_app">
     <configuration name="Flask_app" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -174,5 +163,35 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="739" y="274" key="FileChooserDialogImpl" timestamp="1583587528862">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583587528862" />
+    <state width="1899" height="192" key="GridCell.Tab.0.bottom" timestamp="1583592124273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="192" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1583592124273" />
+    <state width="1899" height="192" key="GridCell.Tab.0.center" timestamp="1583592124273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="192" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1583592124273" />
+    <state width="1899" height="192" key="GridCell.Tab.0.left" timestamp="1583592124273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="192" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1583592124273" />
+    <state width="1899" height="192" key="GridCell.Tab.0.right" timestamp="1583592124273">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="192" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1583592124273" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1583587615431">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1583587615431" />
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1583587245876">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1583587245876" />
   </component>
 </project>
