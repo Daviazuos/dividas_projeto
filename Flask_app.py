@@ -1,6 +1,7 @@
 from flask import Flask,render_template, redirect, url_for
 from form import fields
 import os
+import funcoes
 import conn
 
 SECRET_KEY = os.urandom(32)
@@ -10,8 +11,9 @@ app.config['SECRET_KEY'] = SECRET_KEY
 
 @app.route('/del_divida',methods=['POST','GET'])
 def delete_db():
+   form = fields()
    msg = conn.delete_database()
-   return msg
+   return render_template('add_divida.html',form= form, msg=msg)
 
 @app.route('/add_divida',methods=['POST','GET'])
 def add_divida():
@@ -36,9 +38,9 @@ def edit_divida():
 
 @app.route('/',methods=['POST','GET'])
 def index():
-    msg = ''
     form = fields()
     name = conn.select_db()
+    msg = 'Dívidas referente ao mês: '+ funcoes.meses(name[2])
     return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1])
 
 @app.route('/')

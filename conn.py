@@ -1,4 +1,5 @@
 import sqlite3 as sql
+import datetime
 
 def insert_status(form):
     msg = "Record successfully added"
@@ -40,10 +41,13 @@ def edit_dividas():
 def select_db():
     with sql.connect("database.db") as con:
         cur = con.cursor()
-        cur.execute("select * from dados")
+        # mes na mão
+        mes = str(datetime.datetime.now().month).zfill(2)
+        cur.execute("SELECT * FROM dados")
         dados = cur.fetchall()
-        total = str(sum([float(x[2]) for x in dados]))
-    return [dados, total]
+        dados_mes = [x for x in dados if x[3][5:7] == mes]
+        total = str(sum([float(x[2]) for x in dados_mes]))
+    return [dados_mes, total, mes]
 
 def insert_db_card(form):
     msg = "Record successfully added"
@@ -62,13 +66,13 @@ def insert_db(form):
         cur = con.cursor()
         try:
             if form.fixa.data:
-                parcela = ''
-                cur.execute("INSERT INTO dados (nome,parcelas,valor,vencimento) VALUES(?, ?, ?, ?)",(str(form.nome.data), parcela, float(form.valor.data), str(form.vencimento.data)))
+                parcela = 'Divida Fixa'
+                cur.execute("INSERT INTO dados (nome,parcelas,valor,vencimento,fixa) VALUES(?, ?, ?, ?, ?)",(str(form.nome.data), parcela, float(form.valor.data), str(form.vencimento.data), str(form.fixa.data)))
                 con.commit()
             else:
                 for parcela in range(1, int(form.parcelas.data) + 1):
-                    cur.execute("INSERT INTO dados (nome,parcelas,valor,vencimento) VALUES(?, ?, ?, ?)",(str(form.nome.data), parcela, float(form.valor.data),str(form.vencimento.data)))
+                    cur.execute("INSERT INTO dados (nome,parcelas,valor,vencimento,fixa) VALUES(?, ?, ?, ?)",(str(form.nome.data), parcela, float(form.valor.data),str(form.vencimento.data), str(form.fixa.data)))
                 con.commit()
-        except Exception:
-            msg = "Error"
+        except Exception as e:
+            msg = e
     return msg
