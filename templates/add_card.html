@@ -1,32 +1,38 @@
 <!DOCTYPE html>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <html>
 	<body>
-		<div class="jumbotron text-center">
-			<h1>Adicionar Dívida</h1>
-		</div>
-		<form action="" method="post">
-		{{ form.csrf_token}}
-			<div class="col-md-6 col-md-offset-3">
-				<div class="form-group">
-					<label> Nome do Cartão </label>
-					{{ form.nome(class="form-control")}}
-					<label> Vencimento </label>
-					{{ form.vencimento(class="form-control",type="date",value="2020-01-01")}}
-					<div class="alert alert-primary" role="alert"> {{ msg }} </div>			    
+		<div class="container h-100">
+			<div class="col-md-15 col-md-offset-15">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				  <a class="navbar-brand" href="#">Organizze</a>
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+					  <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+					  <a class="nav-item nav-link active" href="/add_divida">Adicionar Dividas</a>
+					  <a class="nav-item nav-link active" href="/edit_divida">Editar Dividas</a>
+					  <a class="nav-item nav-link active" href="/add_card">Adicionar cartão de credito</a>
+					</div>
+				  </div>
+				</nav>
+				
+				<div class="alert alert-light" role="alert"> {{ msg }} </div>
+				<form action="" method="post">
+				{{ form.csrf_token}}
+					<div class="form-group">
+						<label> Nome do Cartão </label>
+						{{ form.nome(class="form-control")}}
+						<label> Vencimento </label>
+						{{ form.vencimento(class="form-control",type="date",value="2020-01-01")}}
+					</div>
 					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
-			</div>
-		</form>
-		<form action="/" method="post">
-			<button type="submit" class="btn btn-primary">Voltar</button>
-		</form>
-		<form action="/del_divida" method="post">
-			<button type="submit" class="btn btn-primary">Deletar tudo!</button>
-		</form>
-		<form action="/add_card" method="post">
-			<button type="submit" class="btn btn-primary">Adicionar cartão de credito</button>
-		</form>
+				</form>
+			</div>	
+		</div>
 	</body>
 </html>
