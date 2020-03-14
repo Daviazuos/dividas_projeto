@@ -1,8 +1,9 @@
-from flask import Flask,render_template, redirect, url_for
+from flask import Flask,render_template, redirect, url_for, request
 from form import fields
 import os
 import funcoes
 import conn
+import datetime
 
 SECRET_KEY = os.urandom(32)
 
@@ -38,14 +39,23 @@ def edit_divida():
 
 @app.route('/',methods=['POST','GET'])
 def index():
+    msgcard = ''
+    ChoicedMonth = str(datetime.datetime.now().month).zfill(2)
     form = fields()
-    name = conn.select_db()
+    if request.method == 'POST':
+        CardId = request.form.get('ChoiceCard')
+        ValueCard = request.form.get('ValueCard')
+        msgcard = conn.UpdateCard([CardId,ValueCard])
+        if ChoicedMonth is None:
+            ChoicedMonth = str(datetime.datetime.now().month).zfill(2)
+        name = conn.select_db(ChoicedMonth)
+        msg = 'Dívidas referente ao mês: ' + funcoes.meses(name[2])
+        cards = conn.select_db_card()
+        return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards)
+    name = conn.select_db(ChoicedMonth)
     msg = 'Dívidas referente ao mês: '+ funcoes.meses(name[2])
-    return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1])
-
-@app.route('/')
-def home():
-    return redirect(url_for('/index'))
+    cards = conn.select_db_card()
+    return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards, msgcard= msgcard)
 
 if __name__ == '__main__':
     app.run(debug=True)

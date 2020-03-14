@@ -6,5 +6,5 @@ class fields(FlaskForm):
     nome = StringField("Nome")
     valor = DecimalField("Valor")
     vencimento = DateField("vencimento")
-    fixa = BooleanField('fixa')
-    status = StringField('status')
+    fixa = BooleanField('fixa',[validators.optional()])
+    status = StringField('status',[validators.optional()])

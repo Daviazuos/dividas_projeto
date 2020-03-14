@@ -21,10 +21,30 @@
 					</div>
 				  </div>
 				</nav>
-				
-				<div class="alert alert-light" role="alert"> {{ msg }} </div>
-			
-				<table id="example" class="table table-striped table-bordered">
+				<form method="post">
+					<div class="dropdown">
+					<select name='StartMonth' class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Por favor selecione um mês</option>
+                        <option class="dropdown-item" value="01">Janeiro</option>
+                        <option class="dropdown-item" value="02">Fevereiro</option>
+                        <option class="dropdown-item" value="03">Março</option>
+                        <option class="dropdown-item" value="04">Abril</option>						
+                        <option class="dropdown-item" value="05">Maio</option>						
+                        <option class="dropdown-item" value="06">Junho</option>						
+                        <option class="dropdown-item" value="07">Julho</option>						
+                        <option class="dropdown-item" value="08">Agosto</option>						
+                        <option class="dropdown-item" value="09">Setembro</option>						
+                        <option class="dropdown-item" value="10">Outubro</option>						
+                        <option class="dropdown-item" value="11">Novembro</option>						
+                        <option class="dropdown-item" value="12">Dezembro</option>						
+                    </select>
+                    <input class="btn btn-primary" name ="StartMonth" type="submit" value="OK">
+					</div>
+  				</form>
+
+  				<div class="alert alert-light" role="alert"> {{ msg }} </div>
+
+				<table id="MOnthValues" class="table table-striped table-bordered">
 					<thead>
 						<tr>
 						  <th scope="col">Parcela</th>
@@ -45,7 +65,7 @@
 							</tr>
 						{% endfor %}
 					</tbody>
-				</table>			
+				</table>
 				<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -58,19 +78,28 @@
 						</tr>
 				</tbody>
 				</table>
-				
-				<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Dropdown button
-				</button>
-				  
-				{% for worker in names %}  
-				    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="#">{{worker.nome}}</a>
-					</div>
-				{% endfor %}
-				</div>
-			</div>
+				<p> Adicionar valor ao cartão de crédito </p>
+				<form method="post">
+					<div class="input-group">
+		            	<div class="dropdown">
+		              		<select name='ChoiceCard' class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                		{% for card in cards %}
+				                  <option class="dropdown-item" value="" disabled="disabled"  style="display:none" selected="selected">Selecione um cartão</option>
+				                  <option class="dropdown-item" value="{{ card[2] }}">{{ card[0] }}</option>          
+		                		{% endfor %}
+		              		</select>
+		              	</div>
+		                <p></p>
+	                	<div class="col-md-15 col-md-offset-15">
+		                  <input type="text" class="form-control" placeholder="Valor" aria-describedby="basic-addon2" name ="ValueCard">
+		                </div>
+	                    <div class="input-group-append">
+	                       <input class="btn btn-primary" name ="ChoiceCard" type="submit" value="OK">
+	                    </div>
+	                </div>
+	            </form>
+
+        	</div>
 		</div>
 		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
