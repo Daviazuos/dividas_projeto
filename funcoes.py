@@ -1,4 +1,5 @@
-
+import datetime
+from dateutil.relativedelta import relativedelta
 
 def meses(numero_mes):
     dict_meses = {
@@ -16,3 +17,12 @@ def meses(numero_mes):
         '12': 'dezembro'
     }
     return dict_meses[numero_mes]
+
+def ChoiceCardMonth(Day, CardLimit):
+    Month = datetime.datetime.today()
+    if int(Day[-2:]) <= int(CardLimit[-2:]):
+        Month = datetime.datetime.now().month
+    elif int(Day[-2:]) > int(CardLimit[-2:]):
+        Month = datetime.datetime.now() + relativedelta(months=+1)
+    AdjustDate = [str(datetime.datetime.now().year), str(Month.month).zfill(2), str(CardLimit[-2:])]
+    return '-'.join(AdjustDate)

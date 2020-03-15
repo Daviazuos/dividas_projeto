@@ -43,19 +43,23 @@ def index():
     ChoicedMonth = str(datetime.datetime.now().month).zfill(2)
     form = fields()
     if request.method == 'POST':
+
+        ChoicedMonth = request.form.get('StartMonth')
         CardId = request.form.get('ChoiceCard')
         ValueCard = request.form.get('ValueCard')
-        msgcard = conn.UpdateCard([CardId,ValueCard])
+        DateBuy = request.form.get('DateBuy')
+        msgcard = conn.UpdateCard([CardId,ValueCard,DateBuy])
+
         if ChoicedMonth is None:
             ChoicedMonth = str(datetime.datetime.now().month).zfill(2)
         name = conn.select_db(ChoicedMonth)
         msg = 'Dívidas referente ao mês: ' + funcoes.meses(name[2])
         cards = conn.select_db_card()
-        return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards)
+        return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards,msgcard= msgcard, CardName = name[3])
     name = conn.select_db(ChoicedMonth)
     msg = 'Dívidas referente ao mês: '+ funcoes.meses(name[2])
     cards = conn.select_db_card()
-    return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards, msgcard= msgcard)
+    return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards, msgcard= msgcard, CardName = name[3])
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,6 +1,7 @@
 import sqlite3 as sql
 import datetime
 import uuid
+import funcoes
 
 def insert_status(form):
     msg = "Record successfully added"
@@ -40,6 +41,7 @@ def edit_dividas():
     return dados
 
 def select_db(mes):
+    ValuesCard = ''
     with sql.connect("database.db") as con:
         cur = con.cursor()
         cur.execute("SELECT * FROM dados")
@@ -47,12 +49,17 @@ def select_db(mes):
         cur.execute("SELECT * FROM dados_cartao")
         dados_cartao = cur.fetchall()
 
-        ValuesCard = [x for x in dados_cartao if x[1][5:7] == mes]
+        dados_mes = [x for x in dados if x[3][5:7] == mes or x[5] == 'True']
+        try:
+            ValuesCard = [x for x in dados_cartao if x[3][5:7] == mes]
+        except TypeError:
+            pass
+        total = sum([float(x[2]) for x in dados_mes])
+        totalcard = sum([float(x[2]) for x in ValuesCard])
 
-        dados_mes = [x for x in dados if x[1][5:7] == mes]
+        total_geral = total + totalcard
 
-        total = str(sum([float(x[2]) for x in dados_mes]))
-    return [dados_mes, total, mes]
+    return [dados_mes, str(total_geral), mes, ValuesCard]
 
 def select_db_card():
     with sql.connect("database.db") as con:
@@ -68,7 +75,7 @@ def insert_db_card(form):
     with sql.connect("database.db") as con:
         cur = con.cursor()
         try:
-            cur.execute("INSERT INTO dados_cartao (nome,vencimento,id_divida) VALUES(?, ?, ?)",(str(form.nome.data),str(form.vencimento.data),str(id_divida)))
+            cur.execute("INSERT INTO dados_cartao (nome,limitdate,id_divida) VALUES(?, ?, ?)",(str(form.nome.data),str(form.vencimento.data),str(id_divida)))
             con.commit()
         except Exception as e:
             msg = e
@@ -79,13 +86,16 @@ def UpdateCard(Values):
     try:
         with sql.connect("database.db") as con:
             cur = con.cursor()
-            cur.execute("select Valor from dados_cartao where id_divida = {}".format("'"+Values[0]+"'"))
-            ValorAtual = [x for x in cur.fetchall()]
-            if ValorAtual[0][0]:
+            cur.execute("select * from dados_cartao where id_divida = {}".format("'"+Values[0]+"'"))
+            CardDados = cur.fetchall()
+            ValorAtual = [x[2] for x in CardDados]
+            CardLimit = CardDados[0][7]
+            BuyDate = funcoes.ChoiceCardMonth(Values[2],CardLimit)
+            if ValorAtual[0]:
                 NewValue = float(Values[1]) + float(''.join(ValorAtual[0][0]))
             else:
                 NewValue = Values[1]
-            cur.execute("UPDATE dados_cartao SET Valor = {} WHERE id_divida = {}".format(NewValue,"'"+Values[0]+"'"))
+            cur.execute("UPDATE dados_cartao SET Valor = {}, vencimento = {} WHERE id_divida = {}".format(NewValue,"'"+BuyDate+"'","'"+Values[0]+"'"))
             cur.execute("COMMIT")
     except Exception as e:
         msg = e
