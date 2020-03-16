@@ -7,6 +7,7 @@ import datetime
 
 SECRET_KEY = os.urandom(32)
 
+port = int(os.environ.get('PORT', 5000))
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = SECRET_KEY
 
@@ -62,4 +63,4 @@ def index():
     return render_template('home.html', form=form, msg=msg, names=name[0], total=name[1], cards=cards, msgcard= msgcard, CardName = name[3])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=port)
