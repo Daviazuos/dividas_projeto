@@ -7,7 +7,7 @@ import datetime
 
 SECRET_KEY = os.urandom(32)
 
-port = int(os.environ.get('PORT', 3000))
+port = int(os.environ.get('PORT', 33507))
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = SECRET_KEY
 
