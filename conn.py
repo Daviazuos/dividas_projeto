@@ -6,11 +6,11 @@ import psycopg2
 
 
 def ConnPostgres():
-    host = 'ec2-34-200-101-236.compute-1.amazonaws.com'
-    db = 'dfs0addm56l0ug'
-    User = 'opvwlqtlesrzmv'
+    host = 'ec2-54-210-128-153.compute-1.amazonaws.com'
+    db = 'd70brmf7r9abes'
+    User = 'fmjmfwownoyrgu'
     port = 5432
-    password = '4f46016652be1d8c7f2a615588255859e39d9c4d614361e29f097073d0e5ea19'
+    password = '79d661370a9b3f63ae3b4e4e4d0ecd5baa34dfd7ede7b76f464684da93db2b06'
     con = psycopg2.connect(host=host, database=db, user=User, password=password, port=port)
     cur = con.cursor()
     return [cur,con]
